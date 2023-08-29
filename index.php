@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows == 1) {
 		//$_SESSION['loggedin'] = true;
-        header("Location: ./Sistema/Registrar.php");
+        header("Location: ./Sistema/index.php");
         echo "Inicio de sesión exitoso";
     } else {
         echo "NO SE PUDO INICIAR SESION";
