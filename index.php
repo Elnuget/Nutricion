@@ -50,7 +50,7 @@
 <?php
 session_start();
 // Establecer la conexión a la base de datos
-$servername = "23.145.120.75"; // Cambia esto al nombre de tu servidor de base de datos
+$servername = "pichincha"; // Cambia esto al nombre de tu servidor de base de datos
 $username = "gonzaloe_gonzaloe";     // Cambia esto a tu nombre de usuario de base de datos
 $password = "2+z0DZv#l95OYy";            // Cambia esto a tu contraseña de base de datos
 $dbname = "gonzaloe_Prueba1";                   // Nombre de la base de datos
