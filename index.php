@@ -25,17 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //header("Location: ./Sistema");
         echo "Inicio de sesión exitoso";
     } else {
-        echo "
-		
-
-		<script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Inicio de sesión fallido',
-                text: 'El usuario y/o la contraseña son incorrectos.',
-                confirmButtonText: 'OK'
-            });
-          </script>";
+        echo "NO SE PUDO INICIAR SESION";
     }
 }
 
