@@ -50,10 +50,10 @@
 <?php
 session_start();
 // Establecer la conexión a la base de datos
-$servername = "localhost"; // Cambia esto al nombre de tu servidor de base de datos
-$username = "root";     // Cambia esto a tu nombre de usuario de base de datos
-$password = "";            // Cambia esto a tu contraseña de base de datos
-$dbname = "nutri";                   // Nombre de la base de datos
+$servername = "23.145.120.75"; // Cambia esto al nombre de tu servidor de base de datos
+$username = "gonzaloe_gonzaloe";     // Cambia esto a tu nombre de usuario de base de datos
+$password = "2+z0DZv#l95OYy";            // Cambia esto a tu contraseña de base de datos
+$dbname = "gonzaloe_Prueba1";                   // Nombre de la base de datos
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
