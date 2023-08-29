@@ -70,8 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
-		$_SESSION['loggedin'] = true;
-        header("Location: ./Sistema");
+		//$_SESSION['loggedin'] = true;
+        //header("Location: ./Sistema");
         echo "Inicio de sesión exitoso";
     } else {
         echo "
