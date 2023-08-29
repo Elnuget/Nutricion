@@ -27,9 +27,7 @@
                         <button class="btn btn-secondary">Registrar Paciente</button>
                     </li>
                 </ul>
-                <form method="post" action="">
-                    <button class="btn btn-danger" type="submit" name="logout">Cerrar Sesión</button>
-                </form>
+                
             </div>
         </div>
     </nav>
