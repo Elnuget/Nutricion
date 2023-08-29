@@ -1,4 +1,46 @@
+<?php
+session_start();
+// Establecer la conexión a la base de datos
+$servername = "pichincha"; // Cambia esto al nombre de tu servidor de base de datos
+$username = "gonzaloe_gonzaloe";     // Cambia esto a tu nombre de usuario de base de datos
+$password = "2+z0DZv#l95OYy";            // Cambia esto a tu contraseña de base de datos
+$dbname = "gonzaloe_Prueba1";                   // Nombre de la base de datos
 
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Procesar el inicio de sesión
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $usuario = $_POST["usuario"];
+    $contraseña = $_POST["contraseña"];
+
+    $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND contraseña = '$contraseña'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows == 1) {
+		//$_SESSION['loggedin'] = true;
+        //header("Location: ./Sistema");
+        echo "Inicio de sesión exitoso";
+    } else {
+        echo "
+		
+
+		<script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Inicio de sesión fallido',
+                text: 'El usuario y/o la contraseña son incorrectos.',
+                confirmButtonText: 'OK'
+            });
+          </script>";
+    }
+}
+
+$conn->close();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -45,49 +87,7 @@
             </form>
         </div>
     </div>
-	<?php
-session_start();
-// Establecer la conexión a la base de datos
-$servername = "pichincha"; // Cambia esto al nombre de tu servidor de base de datos
-$username = "gonzaloe_gonzaloe";     // Cambia esto a tu nombre de usuario de base de datos
-$password = "2+z0DZv#l95OYy";            // Cambia esto a tu contraseña de base de datos
-$dbname = "gonzaloe_Prueba1";                   // Nombre de la base de datos
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-// Procesar el inicio de sesión
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = $_POST["usuario"];
-    $contraseña = $_POST["contraseña"];
-
-    $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND contraseña = '$contraseña'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows == 1) {
-		//$_SESSION['loggedin'] = true;
-        //header("Location: ./Sistema");
-        echo "Inicio de sesión exitoso";
-    } else {
-        echo "
-		
-
-		<script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Inicio de sesión fallido',
-                text: 'El usuario y/o la contraseña son incorrectos.',
-                confirmButtonText: 'OK'
-            });
-          </script>";
-    }
-}
-
-$conn->close();
-?>
+	
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 
