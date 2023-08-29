@@ -1,85 +1,82 @@
-<?php
-session_start();
-// Establecer la conexión a la base de datos
-$servername = "pichincha"; // Cambia esto al nombre de tu servidor de base de datos
-$username = "gonzaloe_gonzaloe";     // Cambia esto a tu nombre de usuario de base de datos
-$password = "2+z0DZv#l95OYy";            // Cambia esto a tu contraseña de base de datos
-$dbname = "gonzaloe_Prueba1";                   // Nombre de la base de datos
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-// Procesar el inicio de sesión
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = $_POST["usuario"];
-    $contraseña = $_POST["contraseña"];
-
-    $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND contraseña = '$contraseña'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows == 1) {
-		//$_SESSION['loggedin'] = true;
-        header("Location: ./Sistema/index.php");
-        echo "Inicio de sesión exitoso";
-    } else {
-        echo "NO SE PUDO INICIAR SESION";
-    }
-}
-
-$conn->close();
-?>
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
-    <title>Nutrición con Bienestar</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" href="salud.png" type="image/png">
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  </head>
-  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida </title>
+    <link rel="shortcut icon" href="salud.png" type="image/png">
+
+    <!-- Agrega el enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
 <body>
-	<img class="wave" src="img/wave.png">
-	<div class="container">
-		<div class="img">
-			<img src="img/bg.svg">
-		</div>
-		<div class="login-content">
-			<form action="index.php" method="post">
-				<img src="img/women.png">
-				<h2 class="title">Bienvenida</h2>
-           		<div class="input-div one">
-           		   <div class="i">
-           		   		<i class="fas fa-user"></i>
-           		   </div>
-           		   <div class="div">
-           		   		<h5>Usuario</h5>
-           		   		<input type="text" class="input" name="usuario">
-           		   </div>
-           		</div>
-           		<div class="input-div pass">
-           		   <div class="i"> 
-           		    	<i class="fas fa-lock"></i>
-           		   </div>
-           		   <div class="div">
-           		    	<h5>Contraseña</h5>
-           		    	<input type="password" class="input" name="contraseña">
-            	   </div>
-            	</div>
-            	<a href="#">Forgot Password?</a>
-            	<input type="submit" class="btn" value="Login">
-            </form>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Nutri</a>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-primary mr-2">Generar Oferta Alimentaria</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-secondary">Registrar Paciente</button>
+                    </li>
+                </ul>
+                <form method="post" action="">
+                    <button class="btn btn-danger" type="submit" name="logout">Cerrar Sesión</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Aquí va el contenido principal de tu página -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jane</td>
+                            <td>Smith</td>
+                            <td>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-	
-    <script type="text/javascript" src="js/main.js"></script>
-</body>
 
+    <!-- Agrega el enlace a Bootstrap JS (opcional) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 
 </html>
