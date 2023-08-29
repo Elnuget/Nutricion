@@ -45,9 +45,7 @@
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="js/main.js"></script>
-</body>
-<?php
+	<?php
 session_start();
 // Establecer la conexión a la base de datos
 $servername = "pichincha"; // Cambia esto al nombre de tu servidor de base de datos
@@ -90,5 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
 
 </html>
