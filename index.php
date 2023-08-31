@@ -1,80 +1,104 @@
+<?php include 'header.php'; ?>
+<?php include 'dbconexion.php'; 
+// Verificar si se envió el formulario
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recupera los datos del formulario
+    $id = $_POST["id"];
+    $nombre = $_POST["nombre"];
+    $edad = $_POST["edad"];
+    $sexo = $_POST["sexo"];
+    $fecha = $_POST["fecha"];
+    $peso = $_POST["peso"];
+    $talla = $_POST["talla"];
+    $actividad = $_POST["actividad"];
+    $frecuencia = $_POST["frecuencia"];
+    $enfermedad = $_POST["enfermedad"];
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenida </title>
-    <link rel="shortcut icon" href="salud.png" type="image/png">
+    // Consulta SQL para actualizar los datos en la tabla
+    $sql = "UPDATE pacientes SET nombre='$nombre', edad=$edad, sexo='$sexo', fecha='$fecha', peso=$peso, talla=$talla, actividad='$actividad', frecuencia_actividad='$frecuencia', enfermedad='$enfermedad' WHERE id=$id";
 
-    <!-- Agrega el enlace a Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-</head>
+    if ($conn->query($sql) === TRUE) {
+        echo "<script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Actualización exitosa',
+                text: 'Los datos se han actualizado correctamente.',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Aceptar'
+            });
+        </script>";
+    } else {
+        echo "<script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al actualizar',
+                text: 'Ha ocurrido un error al intentar actualizar los datos.',
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'Aceptar'
+            });
+        </script>";
+    }
+}
 
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">Nutri</a>
-            <div class="navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <button class="btn btn-primary mr-2">Generar Oferta Alimentaria</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn btn-secondary">Registrar Paciente</button>
-                    </li>
-                </ul>
-                
-            </div>
-        </div>
-    </nav>
+?>
+<!-- Contenido principal -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Aquí va el contenido principal de tu página -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Tiempo de Dieta</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 
-    <!-- Contenido principal -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <!-- Aquí va el contenido principal de tu página -->
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>
-                                <button class="btn btn-primary">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane</td>
-                            <td>Smith</td>
-                            <td>
-                                <button class="btn btn-primary">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    // Consulta para obtener los datos de la tabla
+                    $sql = "SELECT id, nombre, edad, fecha FROM pacientes";
+                    $result = $conn->query($sql);
+
+                    // Obtener la fecha actual
+                    $fechaActual = date('Y-m-d');
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            // Calcular el tiempo de dieta en semanas y meses
+                            $fechaInicio = $row["fecha"];
+                            $tiempoDeDieta = floor((strtotime($fechaActual) - strtotime($fechaInicio)) / (60 * 60 * 24));
+                            $semanas = floor($tiempoDeDieta / 7);
+                            $meses = floor($tiempoDeDieta / 30);
+
+                            echo "<tr>
+                                <td>{$row["id"]}</td>
+                                <td>{$row["nombre"]}</td>
+                                <td>{$row["edad"]}</td>
+                                <td>{$semanas} semanas / {$meses} meses</td>
+                                <td>
+                                <form action='Modificar.php' method='Post'>
+                                    <input type='hidden' name='id' value='{$row["id"]}'>
+                                    <button type='submit' class='btn btn-primary'>
+                                        <i class='fas fa-pencil-alt'></i>
+                                    </button>
+                                </form>
+                                </td>
+                            </tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='5'>No hay registros disponibles</td></tr>";
+                    }
+
+                    $conn->close();
+                    ?>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 
-    <!-- Agrega el enlace a Bootstrap JS (opcional) -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+<?php include 'footer.php'; ?>
