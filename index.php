@@ -1,5 +1,33 @@
 <?php include 'header.php'; ?>
-<?php include 'dbconexion.php'; 
+<?php include 'dbconexion.php';
+if (isset($_GET["id"])) {
+    $id = $_GET["id"];
+
+    // Consulta SQL para eliminar el registro
+    $sql = "DELETE FROM pacientes WHERE id=$id";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "<script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Eliminación exitosa',
+                text: 'El registro ha sido eliminado correctamente.',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Aceptar'
+            });
+        </script>";
+    } else {
+        echo "<script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al eliminar',
+                text: 'Ha ocurrido un error al intentar eliminar el registro.',
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'Aceptar'
+            });
+        </script>";
+    }
+}
 // Verificar si se envió el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera los datos del formulario
@@ -87,6 +115,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     </button>
                                 </form>
                                 </td>
+                                <td>
+                                        <a href='index.php?id={$row["id"]}' class='btn btn-danger' onclick=\"return confirm('¿Estás seguro de que deseas eliminar este registro?')\">
+                                        <i class='fas fa-trash'></i>
+                                    </a>
+                                </td>
+
                             </tr>";
                         }
                     } else {
