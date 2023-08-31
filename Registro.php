@@ -3,7 +3,7 @@
 // Conjuntos de credenciales para intentar
 $credentialSets = array(
     array("localhost", "root", "", "nutri"),
-    array("pichincha", "gonzaloe_gonzaloe", "2+z0DZv#l95OYy", "gonzaloe_Prueba1")
+    array("localhost", "gonzaloe_gonzaloe", "2+z0DZv#l95OYy", "gonzaloe_Prueba1")
     // Agrega más conjuntos de credenciales si es necesario
 );
 
