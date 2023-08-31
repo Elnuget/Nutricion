@@ -114,8 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <i class='fas fa-pencil-alt'></i>
                                     </button>
                                 </form>
-                                </td>
-                                <td>
+                                
                                         <a href='index.php?id={$row["id"]}' class='btn btn-danger' onclick=\"return confirm('¿Estás seguro de que deseas eliminar este registro?')\">
                                         <i class='fas fa-trash'></i>
                                     </a>
