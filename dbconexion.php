@@ -2,7 +2,7 @@
 $credentialSets = array(
     array("localhost", "root", "", "nutri"),
     // Conjunto 1
-    array("www.gonzaloescudero.edu.ec", "gonzaloe_gonzaloe", "2+z0DZv#l95OYy", "gonzaloe_Prueba1") // Conjunto 2
+    array("23.145.120.75", "gonzaloe_gonzaloe", "2+z0DZv#l95OYy", "gonzaloe_Prueba1") // Conjunto 2
 );
 $conn = null;
 
