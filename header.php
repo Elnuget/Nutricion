@@ -21,7 +21,7 @@
             <div class="navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="btn btn-primary mr-2" href="">Generar Oferta Alimentaria</a>
+                        <a class="btn btn-primary mr-2" href="Oferta.php">Generar Oferta Alimentaria</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-secondary mr-2" href="Registro.php">Registrar Paciente</a>

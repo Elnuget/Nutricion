@@ -39,11 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $peso = $_POST["peso"];
     $talla = $_POST["talla"];
     $actividad = $_POST["actividad"];
-    $frecuencia = $_POST["frecuencia"];
     $enfermedad = $_POST["enfermedad"];
 
     // Consulta SQL para actualizar los datos en la tabla
-    $sql = "UPDATE pacientes SET nombre='$nombre', edad=$edad, sexo='$sexo', fecha='$fecha', peso=$peso, talla=$talla, actividad='$actividad', frecuencia_actividad='$frecuencia', enfermedad='$enfermedad' WHERE id=$id";
+    $sql = "UPDATE pacientes SET nombre='$nombre', edad=$edad, sexo='$sexo', fecha='$fecha', peso=$peso, talla=$talla, actividad='$actividad', enfermedad='$enfermedad' WHERE id=$id";
 
     if ($conn->query($sql) === TRUE) {
         echo "<script>

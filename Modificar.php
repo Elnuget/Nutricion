@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $peso = $row["peso"];
         $talla = $row["talla"];
         $actividad = $row["actividad"];
-        $frecuencia = $row["frecuencia_actividad"];
+        
         $enfermedad = $row["enfermedad"];
     }
 }
@@ -76,27 +76,23 @@ $conn->close();
                         </div>
                         <div class="mb-3">
                             <label for="peso" class="form-label">Peso</label>
-                            <input type="number" class="form-control" id="peso" name="peso"
+                            <input type="number" class="form-control" id="peso" step="0.01" name="peso"
                                 value="<?php echo isset($peso) ? $peso : ''; ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="talla" class="form-label">Talla</label>
-                            <input type="number" class="form-control" id="talla" name="talla"
+                            <input type="number" class="form-control" id="talla" step="0.01" name="talla"
                                 value="<?php echo isset($talla) ? $talla : ''; ?>" required>
                         </div>
 
                         <!-- Actividad física -->
                         <h5 class="card-title">Actividad física</h5>
                         <div class="mb-3">
-                            <label for="actividad" class="form-label">Actividad</label>
-                            <input type="text" class="form-control" id="actividad" name="actividad"
+                            
+                            <input type="number" class="form-control" id="actividad" step="0.01" name="actividad"
                                 value="<?php echo isset($actividad) ? $actividad : ''; ?>">
                         </div>
-                        <div class="mb-3">
-                            <label for="frecuencia" class="form-label">Frecuencia</label>
-                            <input type="text" class="form-control" id="frecuencia" name="frecuencia"
-                                value="<?php echo isset($frecuencia) ? $frecuencia : ''; ?>">
-                        </div>
+                        
 
                         <!-- Enfermedad -->
                         <h5 class="card-title">Enfermedad</h5>

@@ -36,11 +36,11 @@ if ($conn && !$conn->connect_error) {
         $peso = $_POST["peso"];
         $talla = $_POST["talla"];
         $actividad = $_POST["actividad"];
-        $frecuencia = $_POST["frecuencia"];
+        
         $enfermedad = $_POST["enfermedad"];
 
         // Consulta SQL para insertar los datos en la tabla
-        $sql = "INSERT INTO pacientes (nombre, edad, sexo, fecha, peso, talla, actividad, frecuencia_actividad, enfermedad) VALUES ('$nombre', $edad, '$sexo', '$fecha', $peso, $talla, '$actividad', '$frecuencia', '$enfermedad')";
+        $sql = "INSERT INTO pacientes (nombre, edad, sexo, fecha, peso, talla, actividad,  enfermedad) VALUES ('$nombre', $edad, '$sexo', '$fecha', $peso, $talla, '$actividad', '$enfermedad')";
 
         if ($conn->query($sql) === TRUE) {
             echo "<script>
@@ -114,18 +114,18 @@ if ($conn && !$conn->connect_error) {
                         </div>
                         <div class="mb-3">
                             <label for="peso" class="form-label">Peso (kg)</label>
-                            <input type="number" class="form-control" id="peso" name="peso" required>
+                            <input type="number" class="form-control" id="peso" name="peso" step="0.01" required>
                         </div>
                         <div class="mb-3">
                             <label for="talla" class="form-label">Talla (m)</label>
-                            <input type="number" class="form-control" id="talla" name="talla" required>
+                            <input type="number" class="form-control" id="talla" name="talla" step="0.01" required>
                         </div>
 
                         <!-- Actividad física -->
                         <h5 class="card-title">Actividad física</h5>
                         <div class="mb-3">
                             
-                            <input type="text" class="form-control" id="actividad" name="actividad">
+                            <input type="number" class="form-control" id="actividad" step="0.01" name="actividad">
                         </div>
                         
 
