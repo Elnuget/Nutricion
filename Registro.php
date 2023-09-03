@@ -103,9 +103,8 @@ if ($conn && !$conn->connect_error) {
                         <div class="mb-3">
                             <label for="sexo" class="form-label">Sexo</label>
                             <select class="form-select" id="sexo" name="sexo" required>
-                                <option value="masculino">Masculino</option>
-                                <option value="femenino">Femenino</option>
-                                <option value="otro">Otro</option>
+                                <option value="masculino">Hombre</option>
+                                <option value="femenino">Mujer</option>                               
                             </select>
                         </div>
                         <div class="mb-3">
@@ -114,24 +113,21 @@ if ($conn && !$conn->connect_error) {
                                 value="<?php echo date('Y-m-d'); ?>" required>
                         </div>
                         <div class="mb-3">
-                            <label for="peso" class="form-label">Peso</label>
+                            <label for="peso" class="form-label">Peso (kg)</label>
                             <input type="number" class="form-control" id="peso" name="peso" required>
                         </div>
                         <div class="mb-3">
-                            <label for="talla" class="form-label">Talla</label>
+                            <label for="talla" class="form-label">Talla (m)</label>
                             <input type="number" class="form-control" id="talla" name="talla" required>
                         </div>
 
                         <!-- Actividad física -->
                         <h5 class="card-title">Actividad física</h5>
                         <div class="mb-3">
-                            <label for="actividad" class="form-label">Actividad</label>
+                            
                             <input type="text" class="form-control" id="actividad" name="actividad">
                         </div>
-                        <div class="mb-3">
-                            <label for="frecuencia" class="form-label">Frecuencia</label>
-                            <input type="text" class="form-control" id="frecuencia" name="frecuencia">
-                        </div>
+                        
 
                         <!-- Enfermedad -->
                         <h5 class="card-title">Enfermedad</h5>
