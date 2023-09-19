@@ -1,17 +1,23 @@
-
-    <!-- Footer con estilo de Bootstrap -->
-    <footer class="bg-ligth text-black text-center py-3">
+<footer class="bg-light text-black text-center py-4">
         <div class="container">
-            <a href="https://angulocarlos.com/">Carlos Angulo</a>
-            &copy; 2023. Todos los derechos reservados.
+            <div class="my-2">
+                <a href="https://angulocarlos.com/" class="text-decoration-none text-black font-weight-bold">
+                    
+                    Carlos Angulo
+                </a>
+            </div>
+            <div class="mb-3">
+                <!-- Iconos de redes sociales (añade tus URLs en href) -->
+                <a href="#" class="text-black mx-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-black mx-2"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-black mx-2"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-black mx-2"><i class="fab fa-instagram"></i></a>
+            </div>
+            &copy; 2023 Carlos Angulo. Todos los derechos reservados.
         </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-    <!-- Referencias a Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </body>
 
 </html>
